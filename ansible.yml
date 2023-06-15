@@ -1,0 +1,19 @@
+---
+- hosts: webservers
+become: true
+become_user: root
+tasks:
+- name: Installation of HTTPD
+yum:
+name: httpd
+state: present
+- name: Creation of index.html page
+copy:
+content: "WELCOME TO DEVOPS"
+dest: /var/www/html/index.html
+- name: Starting HTTPD Service
+service:
+name: httpd
+state: started
+enabled: true
+...
