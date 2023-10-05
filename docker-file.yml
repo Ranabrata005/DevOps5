@@ -8,3 +8,15 @@ services:
   database:
     image: redis
 
+---
+
+- hosts: webservers
+  become: true
+  become_user: root
+  tasks:
+     - name: User Account Creation
+       user:
+        name: jai
+        uid: 1021
+        state: present
+...
